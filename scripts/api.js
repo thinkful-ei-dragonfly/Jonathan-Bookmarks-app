@@ -3,13 +3,13 @@
 const api = (function(){
   const BASE_URL = 'https://thinkful-list-api.herokuapp.com/jonathan/bookmarks';
 
-  function getBookmarks(){
+  const getBookmarks = function(){
     return fetch(BASE_URL)
     // eslint-disable-next-line indent
     .then(response => response.json);
-  }
+  };
 
-  function createBookmark(bookmark){
+  const createBookmark = function(bookmark){
     const newBookmark = JSON.stringify(bookmark);
     const options = {
       method: 'POST',
@@ -17,14 +17,14 @@ const api = (function(){
       body: newBookmark,
     };
     return fetch(BASE_URL, options);
-  }
+  };
 
-  function deleteBookmark(id){
+  const deleteBookmark = function(id){
     const options = {
       method: 'DELETE',
     };
     fetch(`${BASE_URL}/${id}`, options);
-  }
+  };
   
   return {
     getBookmarks,
