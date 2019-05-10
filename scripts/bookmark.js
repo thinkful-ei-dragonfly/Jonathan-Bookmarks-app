@@ -38,13 +38,19 @@ const bookmark = (function(){
   function handleOpenAddForm(){
     $('#js-add-button').click(event => {
       event.preventDefault();
-      state.toggleAddNew();
+      if(state.addingNew === false){
+        state.toggleAddNew();
+      }
       render();
     });
   }
 
   function handleAddFormClose(){
-
+    $('#js-add-bookmark-form').on('reset', '#js-add-new-bookmark', event =>{
+      event.preventDefault();
+      state.addingNew = false;
+      render();
+    });
   }
 
   function handleAddBookmark(){
