@@ -8,6 +8,7 @@ const bookmark = (function(){
   }
 
   function generateBookmarkString(bookmarks){
+    generateBookmarkElement();
 
   }
   
