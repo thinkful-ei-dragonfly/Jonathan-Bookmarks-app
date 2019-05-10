@@ -9,8 +9,12 @@ const bookmark = (function(){
     <li class="js-bookmark-element" data-bookmark-id="${bookmark.id}">
     ${bookmarkElement} 
     <div>${bookmark.rating} stars</div>
-    <button type="expand">Expand</button>
-    <button type="delete">Delete</button>
+    <button class="bookmark-expand js-bookmark-expand">
+      <span class="button-label">Expand</span>
+    </button>
+    <button class="bookmark-delete js-bookmark-delete">
+      <span class="button-label">Delete</span>
+    </button>
     </li>`;
   }
 
@@ -28,7 +32,7 @@ const bookmark = (function(){
     }
     let bookmarks = [...state.bookmarks ];
     const htmlString = generateBookmarkString(bookmarks);
-    $('#js-bookmark-list').html(htmlString);
+    $('.js-bookmark-list').html(htmlString);
   }
 
   function handleOpenAddForm(){
@@ -40,11 +44,7 @@ const bookmark = (function(){
   }
 
   function handleAddFormClose(){
-    // $('#js-add-bookmark-form').on('close', '#js-add-close'), event => {
-    //   event.preventDefault();
-    //   state.addingNew = false;
-    //   render();
-    // };
+
   }
 
   function handleAddBookmark(){
@@ -67,10 +67,8 @@ const bookmark = (function(){
         description,
         expanded: false,
       };
-      console.log('about to call api');
       api.createBookmark(bookmark)
         .then(newBookmark => {
-          console.log('createbookmark success');
           state.addBookmark(newBookmark);
           state.addingNew = false;
           render();
@@ -79,9 +77,21 @@ const bookmark = (function(){
     });
   }
 
+  function getBookmarkIdFromElement(bookmark){
+    return $(bookmark)
+      .closest('.js-bookmark-element')
+      .data('bookmark-id');
+  }
+  
   function handleDeleteBookmark(){
-    render();
-
+    $('.js-bookmark-list').on('click', '.js-bookmark-delete', event =>{
+      const id = getBookmarkIdFromElement(event.target);
+      api.deleteBookmark(id)
+        .then(response => {
+          state.findAndDelete(id);
+          render();
+        });
+    });
   }
 
   function handleFilterClick(){

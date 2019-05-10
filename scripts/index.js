@@ -1,8 +1,12 @@
 'use strict';
-/* global $, bookmark */
+/* global $, bookmark, api, state */
 
 function main(){
-  bookmark.render();
+  api.getBookmarks()
+    .then(bookmarks =>{
+      bookmarks.forEach(bookmark => state.addBookmark(bookmark));
+      bookmark.render();
+    });
   bookmark.bindEventListeners();
 }
 

@@ -6,7 +6,7 @@ const api = (function(){
   const getBookmarks = function(){
     return fetch(BASE_URL)
     // eslint-disable-next-line indent
-    .then(response => response.json);
+    .then(response => response.json());
   };
 
   const createBookmark = function(bookmark){
@@ -17,14 +17,15 @@ const api = (function(){
       body: newBookmark,
     };
     return fetch(BASE_URL, options)
-      .then(res => res.json());
+      .then(response => response.json());
   };
 
   const deleteBookmark = function(id){
     const options = {
       method: 'DELETE',
     };
-    fetch(`${BASE_URL}/${id}`, options);
+    return fetch(`${BASE_URL}/${id}`, options)
+      .then(response => response.json());
   };
   
   return {
