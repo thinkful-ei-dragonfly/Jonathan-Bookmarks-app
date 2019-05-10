@@ -1,11 +1,20 @@
 'use strict';
-/* global store, $, api */
+/* global store, $, api, state */
 // eslint-disable-next-line no-unused-vars
 
 const bookmark = (function(){
+  function generateBookmarkElement(bookmark){
+
+  }
+
+  function generateBookmarkString(bookmarks){
+
+  }
   
   function render(){
-
+    let bookmarks = [...state.bookmarks ];
+    const htmlString = generateBookmarkString(bookmarks);
+    $('#js-bookmark-list').html(htmlString);
   }
 
   function handleOpenAddForm(){
@@ -27,6 +36,7 @@ const bookmark = (function(){
   }
 
   function handleFilterClick(){
+    render();
 
   }
 
