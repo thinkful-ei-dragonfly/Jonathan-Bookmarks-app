@@ -7,6 +7,7 @@ const state = (function(){
   };
 
   function addBookmark(bookmark){
+    bookmark.expanded = false;
     this.bookmarks.push(bookmark);
   }
 

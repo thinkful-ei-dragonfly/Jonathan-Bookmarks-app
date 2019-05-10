@@ -4,25 +4,27 @@
 
 const bookmark = (function(){
   function generateBookmarkElement(bookmark){
-
+    let bookmarkElement = `<span class="bookmark-item">${bookmark.title}</span>`;
+    return `
+    <li class="js-bookmark-element" data-bookmark-id="${bookmark.id}">
+    ${bookmarkElement} 
+    <div>${bookmark.rating} stars</div>
+    <button type="expand">Expand</button>
+    <button type="delete">Delete</button>
+    </li>`;
   }
 
   function generateBookmarkString(bookmarks){
-    generateBookmarkElement();
-
+    const bookmarkArray = bookmarks.map(bookmark => generateBookmarkElement(bookmark));
+    return bookmarkArray.join('');
   }
   
   function render(){
     if(state.addingNew){
-      $('#js-add-bookmark-form').append(`<form id='js-add-new-bookmark'>
-      <label for="title">Title: </label>
-      <input type="text" name ="title" id = "js-title-input">
-      <label for="url">URL: </label>
-      <input type="url" name = "url" id ="js-url-input">
-      <label for="description">Description: </label>
-      <input type="text" name="description" id="js-description-input">
-      <button type="submit">Submit</button>
-      <button type="cancel" id="js-add-close">Close</button>`);
+      $('#js-add-new-bookmark').removeClass('hidden');
+    }
+    else{
+      $('#js-add-new-bookmark').addClass('hidden');
     }
     let bookmarks = [...state.bookmarks ];
     const htmlString = generateBookmarkString(bookmarks);
@@ -30,24 +32,33 @@ const bookmark = (function(){
   }
 
   function handleOpenAddForm(){
-    $('#js-add-bookmark-form').submit(event => {
+    $('#js-add-button').click(event => {
       event.preventDefault();
       state.toggleAddNew();
       render();
     });
   }
 
-  function handleAddFormCancel(){
-
+  function handleAddFormClose(){
+    // $('#js-add-bookmark-form').on('close', '#js-add-close'), event => {
+    //   event.preventDefault();
+    //   state.addingNew = false;
+    //   render();
+    // };
   }
 
   function handleAddBookmark(){
-    $('#js-add-new-bookmark').submit(event => {
+    $('#js-add-bookmark-form').on('submit', '#js-add-new-bookmark', event => {
       event.preventDefault();
       const title = $('#js-title-input').val();
       const url = $('#js-url-input').val();
-      const rating = $('#js-rating-input').val();
+      const rating = $('.rating').val();
       const description = $('#js-description-input').val();
+
+      $('#js-title-input').val('');
+      $('#js-url-input').val('');
+      $('#js-rating-input').val('');
+      $('#js-description-input').val('');
 
       const bookmark = {
         title,
@@ -56,9 +67,12 @@ const bookmark = (function(){
         description,
         expanded: false,
       };
+      console.log('about to call api');
       api.createBookmark(bookmark)
         .then(newBookmark => {
+          console.log('createbookmark success');
           state.addBookmark(newBookmark);
+          state.addingNew = false;
           render();
         });
       
@@ -81,7 +95,7 @@ const bookmark = (function(){
 
   function bindEventListeners(){
     handleOpenAddForm();
-    handleAddFormCancel();
+    handleAddFormClose();
     handleAddBookmark();
     handleDeleteBookmark();
     handleFilterClick();

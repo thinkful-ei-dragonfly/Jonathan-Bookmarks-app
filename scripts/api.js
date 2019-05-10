@@ -16,7 +16,8 @@ const api = (function(){
       headers: new Headers({'Content-Type': 'application/json'}),
       body: newBookmark,
     };
-    return fetch(BASE_URL, options);
+    return fetch(BASE_URL, options)
+      .then(res => res.json());
   };
 
   const deleteBookmark = function(id){

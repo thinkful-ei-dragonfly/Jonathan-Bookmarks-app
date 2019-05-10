@@ -9,7 +9,7 @@
 </head>
 <body>
   <h1>My Bookmarks</h1>
-  <form id="js-add-bookmark-form">
+  <section id="js-add-bookmark-form">
       <button id = "js-add-button">ADD BOOKMARK</button>
       <select name="rating-filter" id="js-rating-filter">
         <option>Minimum rating</option>
@@ -19,8 +19,25 @@
         <option value="4">4 star</option>
         <option value="5">5 star</option>
       </select>
-    </form>
-  <ul id="js-bookmark-list">
+      <form id='js-add-new-bookmark' class='hidden'>
+          <!-- <label for="title">Title: </label> -->
+          <input type="text" name ="title" id = "js-title-input" placeholder ="Title">
+          <!-- <label for="url">URL: </label> -->
+          <input type="url" name = "url" id ="js-url-input" placeholder="URL">
+          <div>
+          <!-- <label for="description">Description: </label> -->
+          <input type="text" name="description" id="js-description-input" placeholder ="Longer Description here">
+        <input class="rating" type="radio" name="rating" value="5">5 stars</input>
+        <input class="rating" type="radio" name="rating" value="4">4 stars</input>
+        <input class="rating" type="radio" name="rating" value="3">3 stars</input>
+        <input class="rating" type="radio" name="rating" value="2">2 stars</input>
+        <input class="rating" type="radio" name="rating" value="1">1 stars</input>
+      </div>
+          <button type="submit">Submit</button>
+          <button type="close" id="js-add-close">Close</button>
+          </section>
+    </section>
+  <ul class = "bookmarks" id="js-bookmark-list">
 
   </ul>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>

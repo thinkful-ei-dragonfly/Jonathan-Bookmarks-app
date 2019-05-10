@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+}
+
+h1{
+width: 543px; 
+height: 80px; 
+color: #333333; 
+font-family: 'Source Sans Pro'; 
+font-size: 59px; 
+text-align: left; 
+line-height: 1px; 
+padding: 5px; 
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+button{ 
+width: 162px; 
+height: 39px; 
+color: #000000; 
+font-family: 'Source Sans Pro'; 
+font-size: 12px; 
+font-weight: normal; 
+font-style: normal; 
+text-decoration: none; 
+text-align: center; 
+background: #FFFFFF; 
+border: 1px solid #000000; 
+border-radius: 2px; 
+}
+
+button, input[type="text"] {
+  padding: 5px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:hover:disabled {
+  cursor: default;
+}
+
+select{
+  width: 162px; 
+  height: 39px; 
+  color: #000000; 
+  font-family: 'Source Sans Pro'; 
+  font-size: 12px; 
+  font-weight: normal; 
+  font-style: normal; 
+  text-decoration: none; 
+  text-align: center; 
+  background: #FFFFFF; 
+  border: 1px solid #000000; 
+  border-radius: 2px; 
+}
+
+.hidden {
+  display: none;
+}
+
+#bookmark-list-item {
+  width: 250px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.bookmarks {
+  list-style: none;
+  padding-left: 0;
+}
+
+.bookmarks > li {
+  margin-bottom: 20px;
+  border: 1px solid grey;
+  padding: 20px;
+}
+
+.bookmark-item{
+  display: block;
+  color: grey;
+  font-style: italic;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+#js-description-input{ 
+width: 381px; 
+height: 137px; 
+color: #000000; 
+font-family: 'Source Sans Pro'; 
+font-size: 12px; 
+font-weight: normal; 
+font-style: normal; 
+text-decoration: none; 
+text-align: left;
+padding: 1px; 
+line-height: 1px; 
+background: #ffffff; 
+border: 1px solid #000000; 
+border-radius: 0px; 
+}
+
+.rating{
+  display: block
+}
+
+label{
+  padding:5px;
+  color:#222;
+  font-family:corbel,sans-serif;
+  font-size: 14px;
+  margin: 10px;
+}
+
+input{
+  vertical-align: top;
+}
