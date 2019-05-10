@@ -17,10 +17,12 @@ const bookmark = (function(){
   }
 
   function handleAddBookmark(){
+    render();
 
   }
 
   function handleDeleteBookmark(){
+    render();
 
   }
 

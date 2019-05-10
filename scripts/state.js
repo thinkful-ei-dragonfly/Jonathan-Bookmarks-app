@@ -1,6 +1,6 @@
 'use strict';
 // eslint-disable-next-line no-unused-vars
-const store = (function(){
+const state = (function(){
 
   const findAndDelete = function(id){
     this.bookmarks = this.bookmarks.filter(item => item.id !== id);
