@@ -51,6 +51,7 @@ const bookmark = (function () {
       $('#js-add-new-bookmark').addClass('hidden');
     }
     if(!state.error === null){
+      //Append HTML to the DOM if there is an error
     }
     let bookmarks = [...state.bookmarks];
     const htmlString = generateBookmarkString(bookmarks);
