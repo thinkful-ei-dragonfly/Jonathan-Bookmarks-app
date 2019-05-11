@@ -95,7 +95,7 @@ const bookmark = (function () {
 
       $('#js-title-input').val('');
       $('#js-url-input').val('');
-      $('#js-rating-input').val('');
+      $('#js-rating-input').val('Minimum rating');
       $('#js-description-input').val('');
 
       const bookmark = {
