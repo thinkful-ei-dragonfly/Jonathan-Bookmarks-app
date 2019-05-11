@@ -7,7 +7,7 @@ const state = (function(){
   };
 
   function addBookmark(bookmark){
-    bookmark.expanded = false;
+    bookmark.expanded = false; 
     this.bookmarks.push(bookmark);
   }
 
@@ -23,6 +23,11 @@ const state = (function(){
     this.error = error;
   }
 
+  function toggleExpanded(id){
+    const toggledObj = this.bookmarks.find(bookmark => bookmark.id === id);
+    toggledObj.expanded = !toggledObj.expanded;
+  }
+
   return {
     bookmarks: [],
     addingNew: false,
@@ -30,6 +35,7 @@ const state = (function(){
     error: null,
     addBookmark,
     toggleAddNew,
+    toggleExpanded,
     changeRatingFilter,
     updateError,
     findAndDelete,
