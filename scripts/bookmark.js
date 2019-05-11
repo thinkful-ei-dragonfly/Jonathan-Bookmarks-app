@@ -53,6 +53,9 @@ const bookmark = (function () {
     if(state.error !== null){
       $('p').removeClass('hidden');
     }
+    else{
+      $('p').addClass('hidden');
+    }
     let bookmarks = [...state.bookmarks];
     const htmlString = generateBookmarkString(bookmarks);
     $('.js-bookmark-list').html(htmlString);
