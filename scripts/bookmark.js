@@ -46,9 +46,13 @@ const bookmark = (function () {
     let bookmarks = [...state.bookmarks];
     if (state.addingNew) {
       $('#js-add-new-bookmark').removeClass('hidden');
+      $('#js-add-button').addClass('hidden');
+      $('#js-rating-filter').addClass('hidden');
     }
     else {
       $('#js-add-new-bookmark').addClass('hidden');
+      $('#js-add-button').removeClass('hidden');
+      $('#js-rating-filter').removeClass('hidden');
     }
     if(state.error !== null){
       $('p').removeClass('hidden');
