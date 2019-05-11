@@ -1,7 +1,6 @@
 'use strict';
-/* global store, $, api, state */
+/* global state, $, api, state */
 // eslint-disable-next-line no-unused-vars
-
 const bookmark = (function () {
   function generateBookmarkElement(bookmark) {
     let bookmarkElement = `
@@ -103,13 +102,12 @@ const bookmark = (function () {
       api.createBookmark(bookmark)
         .then(newBookmark => {
           if (newBookmark.message) {
-            state.error = 'Form Cannot be submitted';
-            console.log(newBookmark);
+            state.updateError('Form Cannot be submitted');
           }
           else {
             state.addBookmark(newBookmark);
             state.addingNew = false;
-            state.error = null;
+            state.updateError(null);
           }
           render();
         });
@@ -126,7 +124,7 @@ const bookmark = (function () {
     $('.js-bookmark-list').on('click', '.js-bookmark-delete', event => {
       const id = getBookmarkIdFromElement(event.target);
       api.deleteBookmark(id)
-        .then(response => {
+        .then(() => {
           state.findAndDelete(id);
           render();
         });
