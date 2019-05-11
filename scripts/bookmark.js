@@ -54,13 +54,15 @@ const bookmark = (function () {
       $('#js-add-button').removeClass('hidden');
       $('#js-rating-filter').removeClass('hidden');
     }
-    if(state.error !== null){
+
+    if (state.error !== null) {
       $('p').removeClass('hidden');
     }
-    else{
+    else {
       $('p').addClass('hidden');
     }
-    const htmlString = generateBookmarkString(bookmarks);
+    const filteredBookmarks = bookmarks.filter(bookmark => bookmark.rating >= state.ratingFilter);
+    const htmlString = generateBookmarkString(filteredBookmarks);
     $('.js-bookmark-list').html(htmlString);
   }
 
@@ -88,7 +90,7 @@ const bookmark = (function () {
       event.preventDefault();
       const title = $('#js-title-input').val();
       const url = $('#js-url-input').val();
-      const rating = $('.rating').val();
+      const rating = $('#js-rating-input').val();
       const desc = $('#js-description-input').val();
 
       $('#js-title-input').val('');
@@ -136,7 +138,11 @@ const bookmark = (function () {
   }
 
   function handleFilterClick() {
-    render();
+    $('#js-rating-filter').change(event => {
+      const val = $(event.currentTarget).val();
+      state.changeRatingFilter(val);
+      render();
+    });
 
   }
 
