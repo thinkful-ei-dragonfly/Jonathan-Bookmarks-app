@@ -75,6 +75,7 @@ const bookmark = (function () {
     $('#js-add-bookmark-form').on('reset', '#js-add-new-bookmark', event => {
       event.preventDefault();
       state.addingNew = false;
+      state.error = null;
       render();
     });
   }
