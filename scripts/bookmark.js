@@ -43,6 +43,7 @@ const bookmark = (function () {
   }
 
   function render() {
+    let bookmarks = [...state.bookmarks];
     if (state.addingNew) {
       $('#js-add-new-bookmark').removeClass('hidden');
     }
@@ -55,7 +56,6 @@ const bookmark = (function () {
     else{
       $('p').addClass('hidden');
     }
-    let bookmarks = [...state.bookmarks];
     const htmlString = generateBookmarkString(bookmarks);
     $('.js-bookmark-list').html(htmlString);
   }
