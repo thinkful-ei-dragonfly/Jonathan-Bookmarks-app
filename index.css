@@ -123,3 +123,8 @@ label{
 input{
   vertical-align: top;
 }
+
+p{
+  color: red;
+  font-size: 14px;
+}

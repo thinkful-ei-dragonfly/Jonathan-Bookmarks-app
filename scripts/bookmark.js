@@ -50,8 +50,8 @@ const bookmark = (function () {
     else {
       $('#js-add-new-bookmark').addClass('hidden');
     }
-    if(!state.error === null){
-      //Append HTML to the DOM if there is an error
+    if(state.error !== null){
+      $('p').removeClass('hidden');
     }
     let bookmarks = [...state.bookmarks];
     const htmlString = generateBookmarkString(bookmarks);
@@ -100,6 +100,7 @@ const bookmark = (function () {
         .then(newBookmark => {
           if (newBookmark.message) {
             state.error = 'Form Cannot be submitted';
+            console.log(newBookmark);
           }
           else {
             state.addBookmark(newBookmark);
