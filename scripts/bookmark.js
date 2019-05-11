@@ -21,7 +21,7 @@ const bookmark = (function () {
       bookmarkElement = `<li class="js-bookmark-element" data-bookmark-id="${bookmark.id}">
       <span class="bookmark-item">${bookmark.title}</span>
       <div>${bookmark.desc}</div>
-      <a id="bookmark-link" class="bookmark-link js-bookmark-link" href="${bookmark.url}">
+      <a id="bookmark-link" class="bookmark-link js-bookmark-link" href="${bookmark.url}" target="_blank">
         <span class="button-label">Visit Site</span>
       </a>
       <div>${bookmark.rating} stars</div>
