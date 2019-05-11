@@ -4,17 +4,17 @@
 
 h1{
 width: 543px; 
-height: 80px; 
+height: 20px; 
 color: #333333; 
-font-family: 'Source Sans Pro'; 
+font-family: 'Roboto', sans-serif; 
 font-size: 59px; 
 text-align: left; 
 line-height: 1px; 
 padding: 5px; 
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
+h2{
+  font-family: 'Robot', sans-serif;
 }
 
 button, a{ 
@@ -29,19 +29,12 @@ text-decoration: none;
 text-align: center; 
 background: #FFFFFF; 
 border: 1px solid #000000; 
-border-radius: 2px; 
+border-radius: 2px;
+margin-bottom: 10px;
 }
 
 button, a, input[type="text"] {
   padding: 5px;
-}
-
-button:hover {
-  cursor: pointer;
-}
-
-button:hover:disabled {
-  cursor: default;
 }
 
 select{
@@ -78,9 +71,11 @@ select{
 }
 
 .bookmarks > li {
+  background-image: linear-gradient(bottom, white 50%, grey 50%);
   margin-bottom: 20px;
   border: 1px solid grey;
   padding: 20px;
+  border-radius: 20px;
 }
 
 .bookmark-item{
@@ -93,19 +88,6 @@ select{
 
 #js-description-input{ 
 width: 381px; 
-height: 137px; 
-color: #000000; 
-font-family: 'Source Sans Pro'; 
-font-size: 12px; 
-font-weight: normal; 
-font-style: normal; 
-text-decoration: none; 
-text-align: left;
-padding: 1px; 
-line-height: 1px; 
-background: #ffffff; 
-border: 1px solid #000000; 
-border-radius: 0px; 
 }
 
 .rating{
@@ -127,4 +109,66 @@ input{
 p{
   color: red;
   font-size: 14px;
+}
+
+#description{
+  font-size: 12px;
+  font-family: 'Source Sans Pro';
+  margin-bottom: 20px;
+  max-width: 150px;
+}
+
+#rating{
+  margin-top: 10px;
+  font-family: 'Source Sans Pro';
+}
+
+.stars-container{
+  position: relative;
+  display: inline-block;
+  color: transparent;
+  font-size: 20px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.stars-container:efore{
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '★★★★★';
+  color: lightgray;
+}
+
+.stars-container:after{
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '★★★★★';
+  color: gray;
+  overflow: hidden;
+}
+
+.stars-0:after{ 
+  width: 0%;
+}
+
+.stars-1:after{
+  width: 20%;
+}
+
+.stars-2:after{
+  width: 40%;
+}
+
+.stars-3:after{
+  width: 60%;
+}
+
+.stars-4:after{
+  width: 80%;
+}
+
+.stars-5:after{
+  width: 100%;
 }

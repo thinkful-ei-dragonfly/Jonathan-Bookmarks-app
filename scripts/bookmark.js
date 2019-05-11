@@ -5,8 +5,10 @@ const bookmark = (function () {
   function generateBookmarkElement(bookmark) {
     let bookmarkElement = `
     <li class="js-bookmark-element" data-bookmark-id="${bookmark.id}">
-    <span class="bookmark-item">${bookmark.title}</span> 
-    <div>${bookmark.rating} stars</div>
+    <span class="bookmark-item">${bookmark.title}</span>
+    <div> 
+    <span class="stars-container stars-${bookmark.rating}">★★★★★</span>
+    </div>
     <button id="bookmark-expand"class="bookmark-expand js-bookmark-expand">
       <span class="button-label">Expand</span>
     </button>
@@ -19,11 +21,13 @@ const bookmark = (function () {
     if (bookmark.expanded) {
       bookmarkElement = `<li class="js-bookmark-element" data-bookmark-id="${bookmark.id}">
       <span class="bookmark-item">${bookmark.title}</span>
-      <div>${bookmark.desc}</div>
+      <div id="description">${bookmark.desc}</div>
       <a id="bookmark-link" class="bookmark-link js-bookmark-link" href="${bookmark.url}" target="_blank">
         <span class="button-label">Visit Site</span>
       </a>
-      <div>${bookmark.rating} stars</div>
+      <div>
+      <span class="stars-container stars-${bookmark.rating}">★★★★★</span>
+      </div>
         <button id="bookmark-expand-close" class="js-bookmark-expand js-bookmark-expand-close">
           <span class="button-label">Close</span>
         </button>
